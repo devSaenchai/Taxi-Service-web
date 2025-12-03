@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calicut Ride - Premium Taxi Services | Clean & Modern</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font for a modern look (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles for Minimalist Aesthetics */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fcfcfc; /* Very light, clean background */
+        }
+
+        /* --- Transitions and Effects --- */
+        .card-lift {
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Subtle initial shadow */
+        }
+        .card-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.05); /* Elevated shadow on hover */
+        }
+
+        /* Star Rating Style (accent color for minimalism) */
+        .star-filled {
+            color: #2563eb; /* Tailwind blue-600 accent */
+        }
+        
+        /* Loading Screen Overlay (Simplified) */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease-out;
+        }
+
+        /* Custom Spinner - Minimalist blue */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e0f2fe; /* Light blue base */
+            border-top: 4px solid #2563eb; /* Tailwind blue-600 */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Subtle Fade In Animation (for initial load) */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. Loading Screen -->
+    <div id="loading-screen">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div id="main-content" class="min-h-screen">
+        
+        <!-- Header & Navigation (Fixed, Clean White) -->
+        <header class="sticky top-0 z-50 bg-white shadow-md/50 backdrop-blur-sm">
+            <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="text-3xl font-extrabold text-gray-900">
+                    <span class="text-blue-600">Calicut</span><span class="text-gray-800">Ride</span>
+                </div>
+                
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex space-x-8 text-gray-600 font-medium text-sm">
+                    <a href="#home" class="hover:text-blue-600 transition duration-300">Home</a>
+                    <a href="#services" class="hover:text-blue-600 transition duration-300">Services</a>
+                    <a href="#cars" class="hover:text-blue-600 transition duration-300">Fleet</a>
+                    <a href="#book-now" class="hover:text-blue-600 transition duration-300">Book Now</a>
+                </div>
+
+                <!-- Call to Action Button (Header) -->
+                <a href="tel:+919876543210" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-full text-sm shadow-lg transition duration-300 transform hover:scale-105">
+                    <svg class="w-4 h-4 inline-block mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    Call Us
+                </a>
+            </nav>
+        </header>
+
+        <!-- 2. Hero Section (Minimalist and Bold) -->
+        <section id="home" class="pt-24 pb-32 lg:pt-32 lg:pb-48 bg-gray-50 border-b border-gray-100">
+            <div class="max-w-5xl mx-auto px-4 text-center fade-in-up" style="animation-delay: 0.1s;">
+                <p class="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-3">Premium Taxi Service in Kozhikode</p>
+                <h1 class="text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight">
+                    Travel Seamlessly Across <span class="text-blue-600">Calicut</span>
+                </h1>
+                <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+                    Punctual, professional, and reliable transport for airport transfers, city tours, and inter-state journeys.
+                </p>
+                <div class="mt-10 flex justify-center space-x-4">
+                    <!-- Strong CTA -->
+                    <a href="#book-now" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full text-lg shadow-xl transition duration-300 transform hover:scale-[1.03] focus:ring-4 focus:ring-blue-300">
+                        Book Now
+                    </a>
+                    <!-- Secondary CTA -->
+                    <a href="#why-us" class="bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 font-medium py-4 px-10 rounded-full text-lg transition duration-300 transform hover:shadow-md">
+                        Why CalicutRide?
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Services Section (Clean Icons) -->
+        <section id="services" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-gray-900 text-center mb-16 fade-in-up" style="animation-delay: 0.3s;">Services Tailored For You</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                    <!-- Service 1 -->
+                    <div class="card-lift p-8 bg-white rounded-xl border border-gray-100 text-center fade-in-up" style="animation-delay: 0.4s;">
+                        <div class="text-blue-600 mb-4 flex justify-center">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3v-1m18-8v-1a3 3 0 00-3-3h-4"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Airport Transfers (CCJ)</h3>
+                        <p class="text-gray-600 text-sm">Guaranteed on-time pickup and drop-off at Calicut International Airport with fixed, transparent pricing.</p>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="card-lift p-8 bg-white rounded-xl border border-gray-100 text-center fade-in-up" style="animation-delay: 0.5s;">
+                        <div class="text-blue-600 mb-4 flex justify-center">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Local City Rides</h3>
+                        <p class="text-gray-600 text-sm">Quick and efficient transport for local meetings, errands, and sightseeing within Kozhikode city limits.</p>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="card-lift p-8 bg-white rounded-xl border border-gray-100 text-center fade-in-up" style="animation-delay: 0.6s;">
+                        <div class="text-blue-600 mb-4 flex justify-center">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Outstation & Packages</h3>
+                        <p class="text-gray-600 text-sm">Flexible booking for multi-day tours or trips to destinations like Wayanad, Mysore, or Kochi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Cars Section (Fleet Display) -->
+        <section id="cars" class="py-24 bg-gray-50 border-t border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-gray-900 text-center mb-16 fade-in-up" style="animation-delay: 0.7s;">Our Immaculate Fleet</h2>
+                
+                <!-- Car Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Car 1: Sedan Comfort -->
+                    <div class="card-lift bg-white p-5 rounded-xl border border-gray-200 fade-in-up" style="animation-delay: 0.8s;">
+                        <img src="assets/Etios.png" alt="Sedan Taxi" class="w-full h-40 object-cover rounded-lg mb-4 shadow-sm">
+                        <h3 class="text-xl font-bold text-gray-900">Etios</h3>
+                        <p class="text-sm text-gray-500 mb-4">Standard AC, up to 4 Pax. Perfect for short distances.</p>
+                        <a href="#book-now" class="w-full block text-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 text-sm rounded-lg transition duration-300">
+                           Book Now
+                        </a>
+                    </div>
+
+                    <!-- Car 2: SUV Family -->
+                    <div class="card-lift bg-white p-5 rounded-xl border border-gray-200 fade-in-up" style="animation-delay: 0.9s;">
+                        <img src="assets/Innova.png" alt="SUV Family" class="w-full h-40 object-cover rounded-lg mb-4 shadow-sm">
+                        <h3 class="text-xl font-bold text-gray-900">Innova</h3>
+                        <p class="text-sm text-gray-500 mb-4">Extra space, 4-6 Pax. Ideal for family trips and airport luggage.</p>
+                        <a href="#book-now" class="w-full block text-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 text-sm rounded-lg transition duration-300">
+                           Book Now
+                        </a>
+                    </div>
+                    
+                    <!-- Car 3: Premium Sedan -->
+                    <div class="card-lift bg-white p-5 rounded-xl border border-gray-200 fade-in-up" style="animation-delay: 1.0s;">
+                        <img src="assets/Verna.png" alt="Premium Sedan" class="w-full h-40 object-cover rounded-lg mb-4 shadow-sm">
+                        <h3 class="text-xl font-bold text-gray-900">Verna</h3>
+                        <p class="text-sm text-gray-500 mb-4">Luxury interior, 1-3 Pax. Best for corporate or VIP transport.</p>
+                        <a href="#book-now" class="w-full block text-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 text-sm rounded-lg transition duration-300">
+                           Book Now
+                        </a>
+                    </div>
+
+                    <!-- Car 4: Mini Van -->
+                    <div class="card-lift bg-white p-5 rounded-xl border border-gray-200 fade-in-up" style="animation-delay: 1.1s;">
+                        <img src="assets/Traveller.png" alt="Mini Van" class="w-full h-40 object-cover rounded-lg mb-4 shadow-sm">
+                        <h3 class="text-xl font-bold text-gray-900">Traveller</h3>
+                        <p class="text-sm text-gray-500 mb-4">Max capacity, 7+ Pax. Essential for group bookings and tours.</p>
+                        <a href="#book-now" class="w-full block text-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 text-sm rounded-lg transition duration-300">
+                           Book Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hidden Cars (uses same minimalist styling) -->
+                <div id="hidden-cars" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 hidden">
+                    
+                    <!-- Hidden Car 5 -->
+                    <div class="card-lift bg-white p-5 rounded-xl border border-gray-200">
+                        <img src="assets/Ertiga.png" alt="Eco Electric Car" class="w-full h-40 object-cover rounded-lg mb-4 shadow-sm">
+                        <h3 class="text-xl font-bold text-gray-900">Ertiga</h3>
+                        <p class="text-sm text-gray-500 mb-4">Sustainable ride, 1-3 Pax. Silent and environmentally friendly.</p>
+                        <a href="#book-now" class="w-full block text-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 text-sm rounded-lg transition duration-300">
+                           Book Now
+                        </a>
+                    </div>
+
+                    <!-- Hidden Car 6 -->
+                    <div class="card-lift bg-white p-5 rounded-xl border border-gray-200">
+                        <img src="assets/Swift.png" alt="Luxury SUV" class="w-full h-40 object-cover rounded-lg mb-4 shadow-sm">
+                        <h3 class="text-xl font-bold text-gray-900">Swift</h3>
+                        <p class="text-sm text-gray-500 mb-4">Highest comfort, 4-6 Pax. For executive travel.</p>
+                        <a href="#book-now" class="w-full block text-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 text-sm rounded-lg transition duration-300">
+                           Book Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- View All Button -->
+                <div class="text-center mt-12 fade-in-up" style="animation-delay: 1.2s;">
+                    <button id="view-all-button" class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 text-sm">
+                        View All Cars
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Why Us Section (Clean Layout + Carousel) -->
+        <section id="why-us" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:flex lg:items-start lg:justify-between">
+                    <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-16 fade-in-up" style="animation-delay: 1.3s;">
+                        <h2 class="text-4xl font-bold text-gray-900 mb-8">Committed to Excellence</h2>
+                        
+                        <ul class="space-y-6 text-gray-700">
+                            <!-- Feature 1 -->
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 text-blue-600 p-2 bg-blue-50 rounded-full mt-1">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.24A10.033 10.033 0 0112 21c-4.97 0-9-4.03-9-9 0-1.853.535-3.586 1.493-5.06l1.414 1.414A7.969 7.969 0 0012 4a7.969 7.969 0 004.093 1.054l1.414-1.414A10.033 10.033 0 0121 12c0 3.042-1.144 5.867-3.044 8.086"></path></svg>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="font-semibold text-gray-900">Vetted, Local Drivers</p>
+                                    <p class="text-gray-600 text-sm">Our drivers are background-checked and possess intimate knowledge of Calicut's best routes.</p>
+                                </div>
+                            </li>
+                            <!-- Feature 2 -->
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 text-blue-600 p-2 bg-blue-50 rounded-full mt-1">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2v2.25c0 .69-.582 1.25-1.333 1.25H9.333C8.582 13.5 8 12.94 8 12.25V10c0-1.105 1.343-2 3-2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18V8m0 0l-3 3m3-3l3 3m-9 6h6"></path></svg>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="font-semibold text-gray-900">Upfront Fixed Pricing</p>
+                                    <p class="text-gray-600 text-sm">Receive a clear quote before you confirm your ride. No hidden costs, no surge-price shocks.</p>
+                                </div>
+                            </li>
+                            <!-- Feature 3 -->
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 text-blue-600 p-2 bg-blue-50 rounded-full mt-1">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4v-1a1 1 0 011-1h2.186a1 1 0 01.597.199l.867.65a2 2 0 001.378.484H21a1 1 0 011 1v4a1 1 0 01-1 1h-2.186a2 2 0 00-1.378.484l-.867.65a1 1 0 01-.597.199H13a1 1 0 00-1 1v-1m-7-5a1 1 0 01-1-1v-4a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5z"></path></svg>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="font-semibold text-gray-900">Guaranteed Comfort & Safety</p>
+                                    <p class="text-gray-600 text-sm">Our modern fleet is maintained daily to ensure maximum safety and a pleasant travel experience.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 6-Image Carousel Placeholder (Simplified & Framed) -->
+                    <div class="lg:w-5/12 card-lift p-2 bg-white rounded-xl fade-in-up" style="animation-delay: 1.5s;">
+                        <div id="why-us-carousel-wrapper" class="w-full">
+                            <div class="relative w-full aspect-[4/3] rounded-lg overflow-hidden group">
+                                <!-- The main image element -->
+                                <img id="why-us-carousel-image" 
+                                     src="" 
+                                     alt="Calicut Ride Professional Service Photo" 
+                                     class="w-full h-full object-cover transition-opacity duration-500">
+                                
+                                <!-- Navigation Buttons -->
+                                <div class="absolute inset-0 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button id="why-us-prev-btn" class="p-3 bg-gray-800 bg-opacity-40 hover:bg-opacity-70 text-white rounded-r-lg transition-all duration-200 z-10">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+                                    </button>
+                                    <button id="why-us-next-btn" class="p-3 bg-gray-800 bg-opacity-40 hover:bg-opacity-70 text-white rounded-l-lg transition-all duration-200 z-10">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Dot Indicators -->
+                            <div id="why-us-indicators" class="flex justify-center space-x-2 mt-4 pb-2">
+                                <!-- Dots will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Booking Form Section (High Contrast CTA) -->
+        <section id="book-now" class="py-24 bg-blue-600">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-white text-center mb-6 fade-in-up">Ready to Ride?</h2>
+                <p class="text-center text-lg text-blue-100 mb-12 fade-in-up">Fill out the form below to request a quote. We confirm all bookings instantly via WhatsApp.</p>
+
+                <!-- Form Card -->
+                <div class="bg-white p-8 md:p-10 rounded-xl shadow-2xl fade-in-up" style="animation-delay: 0.2s;">
+                    <form id="booking-form" class="space-y-6">
+                        <!-- Row 1: Name and Phone -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                <input type="text" id="name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700">Phone (WhatsApp)</label>
+                                <input type="tel" id="phone" name="phone" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="+91 9xxxx xxxxx">
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Pickup and Dropoff -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="pickup" class="block text-sm font-medium text-gray-700">Pickup Location</label>
+                                <input type="text" id="pickup" name="pickup" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="dropoff" class="block text-sm font-medium text-gray-700">Dropoff Location</label>
+                                <input type="text" id="dropoff" name="dropoff" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+
+                        <!-- Row 3: Date/Time and Car Type -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="datetime" class="block text-sm font-medium text-gray-700">Desired Pickup Time</label>
+                                <input type="datetime-local" id="datetime" name="datetime" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="car-type" class="block text-sm font-medium text-gray-700">Preferred Car Type</label>
+                                <select id="car-type" name="car-type" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 bg-white focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="Sedan Comfort">Sedan Comfort</option>
+                                    <option value="SUV Family">SUV Family</option>
+                                    <option value="Premium Sedan">Premium Sedan</option>
+                                    <option value="Mini Van (7+)">Mini Van (7+ Seater)</option>
+                                    <option value="Any">Any Available Car</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full flex justify-center items-center bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-green-300">
+                            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.176c-1.076-1.503-1.637-3.268-1.637-5.071C.107 4.887 4.992.002 11.085.002s10.978 4.885 10.978 10.751c0 5.867-4.885 10.751-10.978 10.751-1.66 0-3.279-.379-4.764-1.127L.057 24zM11.085 20.334c4.898 0 8.883-4.17 8.883-9.281s-3.985-9.281-8.883-9.281-8.883 4.17-8.883 9.281 3.985 9.281 8.883 9.281zm3.896-7.238c-.244-.122-.924-.457-1.066-.508-.14-.05-.24-.075-.34-.075s-.25.037-.38.188c-.13.15-.5.623-.62.75-.12.127-.25.136-.46.068-.962-.437-1.782-.87-2.515-1.583-.585-.572-.98-1.282-1.3-1.99-.32-.69-.03-1.06.23-1.32.185-.187.41-.458.55-.688.13-.23.19-.344.25-.458.06-.114.03-.217-.025-.32-.055-.103-.51-.23-.65-.333-.14-.103-.24-.26-.37-.393-.13-.133-.01-0.245-.09-0.245h-0.24c-0.12 0-0.25 0.04-0.42 0.22-0.17 0.18-0.65 0.63-0.65 1.547 0 0.916 0.67 1.79 0.77 1.916 0.1 0.126 1.303 2.052 3.16 2.87 0.916 0.41 1.625 0.66 2.185 0.84 0.916 0.298 1.16 0.276 1.34 0.25 0.2-.025 0.63-.25 0.72-.49s0.09-0.46 0.06-0.51c-0.03-.05-0.12-0.075-0.25-0.138z"></path></svg>
+                            Confirm Booking via WhatsApp
+                        </button>
+                        <p id="submission-message" class="text-center text-sm mt-4 text-green-600 font-semibold hidden">
+                            Redirecting to WhatsApp with your booking details...
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Customer Reviews Section (Minimalist Testimonials) -->
+        <section id="reviews" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-gray-900 text-center mb-6 fade-in-up">Trusted by Calicut Locals</h2>
+                <div class="flex justify-center items-center mb-12 fade-in-up" style="animation-delay: 0.1s;">
+                    <!-- Overall Rating Placeholder -->
+                    <div class="text-4xl font-bold text-gray-900 mr-4">4.9</div>
+                    <div class="flex items-center text-xl star-filled">
+                        <span class="mr-1">★</span>
+                        <span class="mr-1">★</span>
+                        <span class="mr-1">★</span>
+                        <span class="mr-1">★</span>
+                        <span class="mr-2">★</span>
+                    </div>
+                    <div class="text-gray-500">(120+ Google Reviews)</div>
+                </div>
+
+                <!-- Reviews Grid (Cleaner, no heavy borders) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Review 1 -->
+                    <div class="card-lift bg-gray-50 p-6 rounded-xl border border-gray-100 fade-in-up" style="animation-delay: 0.2s;">
+                        <p class="text-gray-700 italic text-base">"Used CalicutRide for an early morning airport drop. The driver was punctual, the car was spotless, and the ride was smooth. Very professional and reliable service."</p>
+                        <div class="mt-5 border-t pt-3 border-gray-200 flex items-center">
+                            <img src="https://placehold.co/36x36/3b82f6/ffffff?text=SJ" alt="Reviewer S.J." class="rounded-full mr-3">
+                            <div>
+                                <p class="font-semibold text-gray-900 text-sm">Sanjay John</p>
+                                <div class="flex text-xs star-filled">
+                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="card-lift bg-gray-50 p-6 rounded-xl border border-gray-100 fade-in-up" style="animation-delay: 0.3s;">
+                        <p class="text-gray-700 italic text-base">"Booked an SUV for a day trip to Wayanad. The driver was very patient and knew all the local routes, saving us a lot of time. The pricing was exactly as quoted, no surprises!"</p>
+                        <div class="mt-5 border-t pt-3 border-gray-200 flex items-center">
+                            <img src="https://placehold.co/36x36/059669/ffffff?text=AM" alt="Reviewer A.M." class="rounded-full mr-3">
+                            <div>
+                                <p class="font-semibold text-gray-900 text-sm">Aisha Menon</p>
+                                <div class="flex text-xs star-filled">
+                                    <span>★</span><span>★</span><span>★</span><span>★</span><span class="text-gray-400">★</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="card-lift bg-gray-50 p-6 rounded-xl border border-gray-100 fade-in-up" style="animation-delay: 0.4s;">
+                        <p class="text-gray-700 italic text-base">"Used their City Ride service multiple times for business meetings. The drivers are professional, discreet, and always on time. My go-to taxi service now."</p>
+                        <div class="mt-5 border-t pt-3 border-gray-200 flex items-center">
+                            <img src="https://placehold.co/36x36/9333ea/ffffff?text=RT" alt="Reviewer R.T." class="rounded-full mr-3">
+                            <div>
+                                <p class="font-semibold text-gray-900 text-sm">Ravi Thomas</p>
+                                <div class="flex text-xs star-filled">
+                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Link to external reviews -->
+                <div class="text-center mt-12 fade-in-up" style="animation-delay: 0.5s;">
+                    <a href="https://mock-google-reviews.com/calicutride" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold text-sm underline transition duration-300">
+                        View All 120+ Reviews on Google &rarr;
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white pt-12 pb-5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-gray-700 pb-8">
+                    
+                    <!-- Logo & Contact -->
+                    <div>
+                        <div class="text-3xl font-extrabold text-blue-400 mb-4">
+                            Calicut<span class="text-white">Ride</span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Your reliable travel partner in Kozhikode.</p>
+                        <p class="mt-4 text-sm text-gray-300">
+                            Call: <a href="tel:+919876543210" class="hover:text-blue-400">+91 9876 543 210</a>
+                        </p>
+                        <p class="text-sm text-gray-300">
+                            Email: <a href="mailto:info@calicutride.in" class="hover:text-blue-400">info@calicutride.in</a>
+                        </p>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 text-gray-200">Navigation</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#services" class="text-gray-400 hover:text-blue-400 transition duration-300">Services</a></li>
+                            <li><a href="#cars" class="text-gray-400 hover:text-blue-400 transition duration-300">Our Fleet</a></li>
+                            <li><a href="#why-us" class="text-gray-400 hover:text-blue-400 transition duration-300">Safety & Trust</a></li>
+                            <li><a href="#book-now" class="text-gray-400 hover:text-blue-400 transition duration-300">Book A Ride</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company Links -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 text-gray-200">Company</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">Careers</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">Terms of Service</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Follow Us -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 text-gray-200">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <!-- Social Icons (Simplified) -->
+                            <a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.14 3.733 9.423 8.618 10.15V14.73H8.438v-2.738h2.18v-2.02c0-2.152 1.282-3.344 3.252-3.344 0.963 0 1.782 0.072 2.023 0.104v2.33h-1.378c-1.077 0-1.285 0.513-1.285 1.263v1.655h2.646l-0.344 2.738h-2.302V22.15C18.267 21.423 22 17.14 22 12c0-5.523-4.477-10-10-10z"></path></svg></a>
+                            <a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.707 5.707a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414zM10 12a2 2 0 100 4 2 2 0 000-4z"></path><path d="M18 16a2 2 0 100 4 2 2 0 000-4zm-4 0a4 4 0 100 8 4 4 0 000-8z"></path></svg></a>
+                            <a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.72 6.64a.75.75 0 00-1.11.89l-2.734 3.037a1 1 0 01-1.442.062l-1.928-1.542a.75.75 0 00-1.106.885l1.928 1.542a2.5 2.5 0 003.605-0.155l2.734-3.037a.75.75 0 000-1.11z"></path></svg></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 text-center text-sm text-gray-500">
+                    &copy; 2024 CalicutRide. All rights reserved.
+                </div>
+                <!-- CREDIT LINE -->
+                <div class="mt-1 text-center text-xs text-gray-600">
+                    Website built by <a href="www.thecodingcompany.com" class="text-blue-400 font-semibold">thecodingcompany</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    
+    <!-- JavaScript for Interactivity and Loading -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loadingScreen = document.getElementById('loading-screen');
+            
+            // 1. Hide Loading Screen on window load
+            window.addEventListener('load', () => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500); // Wait for fade out animation
+            });
+
+            // 2. View All Cars Logic
+            const viewAllButton = document.getElementById('view-all-button');
+            const hiddenCarsContainer = document.getElementById('hidden-cars');
+
+            if (viewAllButton) {
+                viewAllButton.addEventListener('click', () => {
+                    const isHidden = hiddenCarsContainer.classList.contains('hidden');
+                    
+                    if (isHidden) {
+                        hiddenCarsContainer.classList.remove('hidden');
+                        // Add smooth transition effect by toggling classes
+                        setTimeout(() => {
+                            // Apply fade-in animation to the newly shown elements
+                            Array.from(hiddenCarsContainer.children).forEach((el, index) => {
+                                el.style.animationDelay = `${0.2 + index * 0.1}s`;
+                                el.classList.add('fade-in-up');
+                            });
+                        }, 10);
+                        
+                        viewAllButton.textContent = 'Show Less Cars';
+                    } else {
+                        // Hide quickly
+                        hiddenCarsContainer.classList.add('hidden');
+                        // Remove animation classes to reset state
+                        Array.from(hiddenCarsContainer.children).forEach(el => {
+                            el.classList.remove('fade-in-up');
+                            el.removeAttribute('style'); // Remove inline style for animation delay
+                        });
+                        
+                        viewAllButton.textContent = 'View All Cars';
+                    }
+                });
+            }
+
+            // 3. Smooth Scrolling (Optional: ensures hash links are smooth)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // 4. Trigger animations for initially visible content
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in-up').forEach(el => {
+                    if (el.style.opacity === "0" || el.style.opacity === "") {
+                        el.style.opacity = '0.01'; 
+                        void el.offsetWidth;
+                        el.style.opacity = '';
+                    }
+                });
+            }, 550);
+
+            // 5. Booking Form Submission Logic (WhatsApp)
+            const bookingForm = document.getElementById('booking-form');
+            const submissionMessage = document.getElementById('submission-message');
+
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    const formData = new FormData(bookingForm);
+                    const name = formData.get('name');
+                    const phone = formData.get('phone');
+                    const pickup = formData.get('pickup');
+                    const dropoff = formData.get('dropoff');
+                    const datetime = formData.get('datetime');
+                    const carType = formData.get('car-type');
+                    
+                    // The business WhatsApp number (placeholder)
+                    const whatsappNumber = '919876543210'; 
+                    
+                    // Format Date/Time for better readability in WhatsApp
+                    let formattedDateTime = 'Not specified';
+                    if (datetime) {
+                        try {
+                            const dateObj = new Date(datetime);
+                            formattedDateTime = dateObj.toLocaleString('en-IN', { 
+                                dateStyle: 'medium', 
+                                timeStyle: 'short' 
+                            });
+                        } catch (error) {
+                            console.error("Date formatting error:", error);
+                        }
+                    }
+
+
+                    // Construct the structured WhatsApp message
+                    let message = `*CalicutRide Booking Request*
+Hello, my name is *${name}* and my number is *${phone}*. I would like to book a taxi.
+
+*Details:*
+- *Pickup:* ${pickup}
+- *Dropoff:* ${dropoff}
+- *Time:* ${formattedDateTime}
+- *Car Type:* ${carType}
+
+Please confirm availability and the estimated fare. Thank you!`;
+
+                    // URL encode the message
+                    const encodedMessage = encodeURIComponent(message);
+                    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+                    // Show success/redirection message
+                    submissionMessage.classList.remove('hidden');
+                    
+                    // Open WhatsApp after a short delay
+                    setTimeout(() => {
+                         window.open(whatsappUrl, '_blank');
+                         // Optionally hide the message after opening
+                         setTimeout(() => { submissionMessage.classList.add('hidden'); }, 3000);
+                    }, 500);
+
+                    // Clear form fields
+                    bookingForm.reset();
+                });
+            }
+
+            // 6. Why Us Image Carousel Logic (6 images)
+            const whyUsImageGallery = [
+                'https://placehold.co/800x600/10b981/ffffff?text=1.+Punctual+Pickup', // Green
+                'https://placehold.co/800x600/3b82f6/ffffff?text=2.+Clean+Car+Interior', // Blue
+                'https://placehold.co/800x600/f59e0b/ffffff?text=3.+Local+Expert+Driver', // Amber
+                'https://placehold.co/800x600/ef4444/ffffff?text=4.+Dedicated+Support', // Red
+                'https://placehold.co/800x600/9333ea/ffffff?text=5.+Safe+and+Secure', // Violet
+                'https://placehold.co/800x600/0d9488/ffffff?text=6.+Transparent+Pricing' // Teal
+            ];
+            
+            const whyUsTotalImages = whyUsImageGallery.length;
+            let whyUsCurrentIndex = 0;
+            const autoLoopInterval = 3500; // 3.5 seconds
+
+            // --- DOM Elements ---
+            const whyUsCarouselImage = document.getElementById('why-us-carousel-image');
+            const whyUsPrevBtn = document.getElementById('why-us-prev-btn');
+            const whyUsNextBtn = document.getElementById('why-us-next-btn');
+            const whyUsIndicatorsContainer = document.getElementById('why-us-indicators');
+            let whyUsIntervalId;
+
+            /**
+             * Updates the carousel content based on the current index.
+             */
+            const updateWhyUsCarousel = () => {
+                if (!whyUsCarouselImage) return; 
+
+                // Start fade-out (reduce opacity)
+                whyUsCarouselImage.style.opacity = 0;
+
+                // Wait for fade-out to complete before changing source
+                setTimeout(() => {
+                    // Update image source
+                    whyUsCarouselImage.src = whyUsImageGallery[whyUsCurrentIndex];
+
+                    // Update indicators
+                    updateWhyUsIndicators();
+
+                    // Start fade-in (restore opacity)
+                    whyUsCarouselImage.style.opacity = 1;
+                }, 500); // Must match the CSS transition duration
+            };
+
+            /**
+             * Navigates to the previous image, looping to the end if necessary.
+             */
+            const showWhyUsPrevious = () => {
+                whyUsCurrentIndex = (whyUsCurrentIndex === 0) ? whyUsTotalImages - 1 : whyUsCurrentIndex - 1;
+                updateWhyUsCarousel();
+                resetWhyUsAutoLoop();
+            };
+
+            /**
+             * Navigates to the next image, looping to the beginning if necessary.
+             */
+            const showWhyUsNext = () => {
+                whyUsCurrentIndex = (whyUsCurrentIndex === whyUsTotalImages - 1) ? 0 : whyUsCurrentIndex + 1;
+                updateWhyUsCarousel();
+                resetWhyUsAutoLoop();
+            };
+
+            /**
+             * Creates and initializes the dot indicators below the image.
+             */
+            const createWhyUsIndicators = () => {
+                if (!whyUsIndicatorsContainer) return; 
+
+                for (let i = 0; i < whyUsTotalImages; i++) {
+                    const dot = document.createElement('button');
+                    dot.classList.add(
+                        'w-3', 'h-3', 'rounded-full', 'bg-gray-400', 'hover:bg-blue-600', 'transition-colors', 'duration-300'
+                    );
+                    dot.dataset.index = i;
+                    dot.addEventListener('click', () => {
+                        whyUsCurrentIndex = i;
+                        updateWhyUsCarousel();
+                        resetWhyUsAutoLoop();
+                    });
+                    whyUsIndicatorsContainer.appendChild(dot);
+                }
+            };
+
+            /**
+             * Updates the visual state of the dot indicators.
+             */
+            const updateWhyUsIndicators = () => {
+                if (!whyUsIndicatorsContainer) return; 
+
+                const dots = whyUsIndicatorsContainer.querySelectorAll('button');
+                dots.forEach((dot, index) => {
+                    if (index === whyUsCurrentIndex) {
+                        dot.classList.remove('bg-gray-400');
+                        dot.classList.add('bg-blue-600'); // Use brand color for active dot
+                    } else {
+                        dot.classList.remove('bg-blue-600');
+                        dot.classList.add('bg-gray-400');
+                    }
+                });
+            };
+
+            /**
+             * Starts or resets the automatic looping interval.
+             */
+            const startWhyUsAutoLoop = () => {
+                if (whyUsCarouselImage) {
+                   whyUsIntervalId = setInterval(showWhyUsNext, autoLoopInterval);
+                }
+            };
+
+            const resetWhyUsAutoLoop = () => {
+                clearInterval(whyUsIntervalId);
+                startWhyUsAutoLoop();
+            };
+
+            /**
+             * Initialize function for the carousel.
+             */
+            const initWhyUsCarousel = () => {
+                 if (whyUsPrevBtn && whyUsNextBtn) {
+                    // Manual navigation
+                    whyUsNextBtn.addEventListener('click', showWhyUsNext);
+                    whyUsPrevBtn.addEventListener('click', showWhyUsPrevious);
+                    
+                    // Create the dot indicators
+                    createWhyUsIndicators();
+                    // Load the first image and update state
+                    updateWhyUsCarousel();
+                    // Start the automatic slideshow
+                    startWhyUsAutoLoop();
+                }
+            };
+
+            // Call initWhyUsCarousel inside DOMContentLoaded listener
+            initWhyUsCarousel();
+        });
+    </script>
+</body>
+</html>
